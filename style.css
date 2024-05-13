@@ -1,0 +1,224 @@
+/* Fiz anotações no documento de HTML, CSS e JS no bloco de notas */
+
+* {         /* * significa SELETOR UNIVERSAL, neste comando CSS eu estarei resetando e retirando todos o margin e padding que o navegador colocar. O navegador coloca valores pré-definidos. */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* A medida do tamanho da caixa, para que seja medida através da borda REVISAR */
+}
+
+:root {     /* (raiz) seletor especial que representa o elemento raiz de um documento HTML, que é o elemento <html>, com essa classe eu consigo definir VÁRIAVEIS para o nosso CSS */   /* Aqui é a versão "Dark" */ /* Opacidade, vai de zero até 1. */
+    --bg-url: url(./bg-mobile.jpg);
+    --text-color-and-border-hover: white;  /* Estou definindo um nome qualquer (--text-color..) para receber um valor, aqui uma cor */
+    --border-color: rgba(255, 255, 255, 0.5);
+    --background-color-list-a: rgba(255, 255, 255, 0.05) ;
+    --background-color-list-a-hover: rgba(255, 255, 255, 0.02) ;
+    --background-color-link-hover: rgba(255, 255, 255, 0.1)  ;
+    --switch-mode: url(./moon-stars.svg);
+}
+.light-mode {   /* Aqui é a propriedade do light-mode (Versão "Clara") */
+    --bg-url: url(./bg-mobile-light.jpg);
+    --text-color-and-border-hover: black;
+    --border-color: rgba(0, 0, 0, 0.5);
+    --background-color-list-a: rgba(0, 0, 0, 0.05) ;
+    --background-color-list-a-hover: rgba(0, 0, 0, 0.02);
+    --background-color-link-hover:  rgba(0, 0, 0, 0.1) ;
+    --switch-mode: url(./sun.svg);
+}
+
+body {
+    background-image: var(--bg-url); /* Aqui estou definindo como algo que pode variar, no caso o background (light or dark) */
+    background-repeat: no-repeat; /* Não repetir o fundo */
+    background-position: top center; /* Alinhamento */
+    background-size: cover; /* Aqui estou cobrindo toda a página com o background, se não colocar esse comando ficaria umas partes brancas onde a imagem não alcançar, aqui estou esticando a imagem */
+    height: 100vh; /* 100% da altura da Viewport (Área de visualização da página no navegador) */
+}
+
+body * {    /* o asterisco é um seletor universal, ou seja... Vai aplicar isso para todos os elementos dentro do body */
+    font-family: "Inter", sans-serif;
+    color: var(--text-color-and-border-hover); /* Aqui é definida como algo que pode variar (light or dark) as cores de todos os meus elementos do body*/
+}
+
+#container {
+    width: 100%; /* Largura 100% do espaço até que ele alcance o máximo de 588px */
+    max-width: 588px; /* Largura máxima do container */
+    /* margin: auto;   /* Mantém alinhado ao meio, com medidas automaticas nas laterais. Devido a uma regra CSS ele não altera os lados de cima e de baixo */
+    margin: 56px auto 0px;
+    padding: 0 24px;
+}
+
+/*Profile*/
+#profile {
+    text-align: center;
+    padding: 24px; /*Adiciona preenchimento em todos os lados cima, baixo e laterais de preenchimento interno*/
+}
+
+#profile img {
+    width: 112px;   /* No CSS geralmente não precisa definir altura, Pq a altura ela segue o conteúdo*/
+}
+
+#profile p {
+    font-weight: 500 ; /* PESO /bold/ Negrito */
+    line-height: 24px ; /* Altura da linha */
+    /* Navegador por padrão usa fontsize de 16px. font-size: 16px; */
+    margin-top: 8px;
+}
+
+#switch {
+    position: relative; /* Vai relativizar o absolute do button, o absoluto vai ser relativo ao elemento. Aqui o button vai ficar dentro da caixa switch. Não vai conseguir sair com a mesma liberdade que tinha em um novo z-index */
+    width: 64px;
+    /*Alinhamento de display block = margin: auto; */
+    margin: 4px auto;
+}
+
+/* Switch / Botão */
+#switch button {
+    width: 32px;
+    height: 32px;
+    background: white;
+    border: 0;
+    border-radius: 50%;
+    /*Alinhamento de background */
+    background-image: var(--switch-mode);
+    background-repeat: no-repeat;
+    background-position: center;
+    /* OU background: white url(./moon-stars.svg) no-repeat center*/
+    position: absolute; /* Tem anotação no documento, basicamente aqui se CRIA uma SOBREPOSIÇÃO DE CAMADAS e libera o z-idex(andar), tbm libera as propriedades(top, left, right, bottom) que permite no NOVO ANDAR ir para qualquer lugar da página*/
+    /* Usando o position: relative; limita o elemento para ficar somente na sua posição normal. (dentro de sua caixa) */
+    z-index: 1; /* Na analogia do prédio esse é o ANDAR em que meu objeto estar */
+    left: 0;
+
+    /* Alinhamento de elemento em posição absoluta */
+    transform: translateY(-50%); /* Lembrar daquela ideia do eixo X (horizontal) e eixo Y (vertical). Aqui estou movendo o elemento no eixo y pra cima ou pra baixo. No caso estou movendo ele -50% pra cima */
+    top: 50%;
+    /* Se fosse alinha horizontalmente, a lógica é a mesma mas usaria left or right and translateX()*/
+
+    animation: slide-back .2s;
+}
+
+/* Troca para quando ele estiver no Light-Mode */
+.light-mode #switch button {
+    /*right: 0;*/   /* Basicamente quando estiver na classe light-mode o botão vai para direita. REVISAR*/
+    /*left: initial;*/ /* Aqui é um left especificando que volta para seu valor inicial (Acho que para os valores das classes não entrarem em conflitos.) REVISAR */
+    /* Aplicar Animação quando o light estiver ativo/ quando clicar no botão para ativar o light*/
+    animation: slide-in 0.2s forwards; /* Propriedade animation: nome_da_animação criada e o tempo para executar */ /* forwards é uma regra para quando terminar (O From, To), manter as propriedades do To.*/
+
+}
+
+#switch button:hover {
+    outline: 8px solid var(--background-color-link-hover) /* Revisar */
+    
+}
+
+/* Track, que fica por baixo do switch */
+#switch span {
+    display: block; /* o span por ter display inline não aceita algumas propriedades como width e height, por conta disso transformamos em block*/
+    width: 64px;
+    height: 24px;
+    background: var(--background-color-list-a);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(4px); /* REVISAR */
+    -webkit-backdrop-filter: blur(4px); /* Para funcionar em outros navegadores. REVISAR */
+    border-radius: 9999px;
+}
+
+/* Lista não ordenada Propriedades  */
+ul {
+    list-style: none; /* Serve para retirar as bolinhas que aparecem em cada item da lista */
+    display: flex;
+    flex-direction: column; /* Deixa os elementos em coluna, um encima do outro */
+    gap: 16px;  /* Espaço entre os elementos. Serve tanto em Colunas quanto em Linhas */
+    padding: 24px 0;
+}
+
+/* Itens da lista */
+ul li a {
+    text-decoration: none; /* Nenhuma decoração de texto, no caso eu estou retirando o sublinhado */
+    font-weight: 500; /* Peso da fonte */
+    /* Alinhamento display flex: align-items: center;, justify-content: center; */
+    display: flex;  /* Um de seus comportamentos é deixar os elementos um do lado do outro de maneira flexivel */
+    align-items: center; /* Alinha o conteúdo no meio da caixa na linha imaginaria, eixo X (horizontal)*/
+    justify-content: center; /* Alinha no eixo Y (vertical) da caixa. */
+    padding: 16px 24px;
+
+    background: var(--background-color-list-a); /* red, green, blue , alpha. Alpha é (TRANSPARÊNCIA ou OPACO é a COR) Opacidade vai de zero até 1.*/
+    border: 1px solid var(--border-color); /* Aqui estou falando que as cores de borda podem variar. No caso (Light or Dark mode) */
+    border-radius: 8px; /* Arredondamento da borda */
+    backdrop-filter: blur(4px); /* Não lembro para que serve essa propriedade. REVISAR */
+
+    transition: background 0.3s; /* Transição suave para o background e o tempo de 0.3s (Pelo oq testei vai até .9) é tipo um delayzinho*/
+}
+
+/* pseudo-selector */
+ul li a:hover {     /* Quando passarmos o mouse em cima*/
+    background: var(--background-color-list-a-hover);
+    border: 1.5px solid var(--text-color-and-border-hover) ;     /* a borda aumenta os pixels (+0.5 ) e acrescenta a cor dependendo do tema (Dark or Light) */
+}
+
+/* Links Sociais */
+#social-links {
+    display: flex;
+    justify-content: center;
+
+    padding: 24px 0;
+    font-size: 24px;
+}
+
+#social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+
+    transition: background .3s ; /*Transição suave para o background de 0.3s (Pelo oq testei vai até .9) é tipo um delayzinho */
+
+    border-radius: 50%; /* Arredondamento da borda / Raio da borda de 50% é uma bolinha perfeita */
+}
+
+#social-links a:hover {
+    background:var(--background-color-link-hover);
+}
+
+/*Rodapé */
+footer {
+    padding: 24px 0;
+    /* Alinhamento de texto: text-align: center; */
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Media Queries REVISAR */ 
+/* Só funcionam quando temos essas regras no HTML: <meta name="viewport" content="width=device-width, initial-scale=1.0">*/
+/* Modificamos a imagem de fundo baseada no dispositivo, a regra abaixo faz com que o background mude a partir de determinado momento */
+
+@media (min-width: 700px) { /* Largura mínima de 700px */
+    :root {
+        --bg-url: url(./bg-desktop.jpg)
+    }
+
+    .light-mode {
+        --bg-url: url(./bg-desktop-light.jpg)
+    }
+
+}
+
+/* Animação */
+
+@keyframes slide-in {    /* keyframes vai definir Animações, depois eu coloco o nome da animação que eu quiser*/
+    from {  /* Vai começar */
+        left: 0;
+    }
+    to {    /* Vai terminar */
+        left: 50%;
+    }
+/* Vai mover o elemento de 0 para 50% */
+/* Toda animação tem o começo e fim e caso ela chegue no fim depois de algum tempo, ela volta pro inicial. Caso eu queira manter as propriedas que tenha no to/ manter elemetno, usar o forwards*/
+}
+
+@keyframes slide-back {
+    from {
+        left: 50%;
+    }
+    to {
+        left: 0;
+    }
+}

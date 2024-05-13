@@ -1,0 +1,79 @@
+<!DOCTYPE html>  
+<html lang="pt-br" class=""> <!-- Linguagem: -->
+
+<head> <!-- Ajustar configurações do nosso documento que não são visíveis para quem acessa a página (CONFIGURAÇÕES DA PÁGINA)-->
+    
+    <!-- O tr&es links abaixo são da instação do Fontes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
+    <meta charset="UTF-8"> <!-- Define quais os conjuntos de caracteres vamos usar, permite usar caracteres especiais-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- (viewport) é a parte visível, está definindo que a parte visível tenha o conteúdo de dentro como largura(width) do dispositivo(device), 
+    se meu dispostivo for pequeno ele vai entender e se adaptar ou se for grande vai se adaptar também. (initial scale) significa que ele começa "sem zoom". (Quando clica duas vezes dar zoom)-->
+
+    <title>Discover</title>
+
+    <link rel="stylesheet" href="style.css"> <!--link é um relacionamento com o arquivo stylesheet, rel: relacionamento, e no href informamos em que lugar estar o CSS-->
+
+</head>
+
+<body>
+
+    <div id="container" >
+        <div id="profile">
+            <img src="./Avatar - Dark.png " alt="Foto de Isaac Rodrigues tema escuro"> <!--src significa em qual lugar do mundo, alt(Alternativa) E se eu não encontrar a imagem, como devo descrever?-->
+            <p>@isaacrodrigues</p>
+        </div>
+
+        <div id="switch" onclick="toggleMode()"> <!-- Para alternar entre Dark or Light / onclick significa: Disperte/Acorde, quando clicar eu vou chamar a função (no caso toggleMode) criada no Js-->
+            <button></button> 
+            
+            <span></span>
+        </div>
+
+        <ul> <!-- Lista não ordenada -->
+            <li> <!-- Itens da Lista -->
+                <a href="https://github.com/Isaac4242" target="_blank">Ver meu portfólio</a>
+            </li>
+            <li>
+                <a href="#" target="_blank">Aluno da Rocketseat</a>
+            </li>
+            <li>
+                <a href="#" target="_blank">Entrar em Contato</a>
+            </li>
+            <li>
+                <a href="#" target="_blank">Estou no Discover</a>
+            </li>
+        </ul>
+
+        <div id="social-links">
+        <!-- Esses são os comandos para usar os icones <ion-icon> -->
+        <!-- O SCRIPT DOS ÍCONES ESTÃO NO FINAL DO BODY -->
+            <a href="https://github.com/Isaac4242" target="_blank">
+                <ion-icon name="logo-github"></ion-icon>
+            </a>
+            <a href="https://github.com/Isaac4242" target="_blank">
+                <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+            <a href="https://github.com/Isaac4242" target="_blank">        
+                <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+            <a href="https://github.com/Isaac4242" target="_blank">        
+                <ion-icon name="logo-discord"></ion-icon>
+            </a>
+        </div>
+
+        <footer>
+            Feito com ♥ pela <a href="https://app.rocketseat.com.br/home" target="_blank">Rocketseat</a>
+        </footer>
+    </div>
+
+    <!-- Script dos Ícones: -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>    <!-- Os Dois Links foram o próprio site de ícones disponibilizou para ter acessos aos diversos icones -->
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script src="./script.js"></script>
+</body> 
+
+</html>
