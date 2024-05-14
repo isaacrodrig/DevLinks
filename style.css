@@ -143,7 +143,9 @@ ul li a {
     background: var(--background-color-list-a); /* red, green, blue , alpha. Alpha é (TRANSPARÊNCIA ou OPACO é a COR) Opacidade vai de zero até 1.*/
     border: 1px solid var(--border-color); /* Aqui estou falando que as cores de borda podem variar. No caso (Light or Dark mode) */
     border-radius: 8px; /* Arredondamento da borda */
+
     backdrop-filter: blur(4px); /* Não lembro para que serve essa propriedade. REVISAR */
+    -webkit-backdrop-filter: blur(4px);
 
     transition: background 0.3s; /* Transição suave para o background e o tempo de 0.3s (Pelo oq testei vai até .9) é tipo um delayzinho*/
 }
