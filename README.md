@@ -3,7 +3,8 @@
 <p align="center">
 Evento exclusivo, promovido pela Rocketseat para ensino de tecnologias WEB.
 </p>
-<p align="center"><a href="https://isaacrodrig.github.io/DevLinks/" target="_blank">Deploy</a></p>
+<p align="center"> <a href="https://isaacrodrig.github.io/DevLinks/" target="_blank">Deploy</a>
+</p>
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
